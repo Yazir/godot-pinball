@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.344841, 0, -0.344841 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 0.570369, 0, 0.821388, 0, 1, 0, -0.821388, 0, 0.570369, -1.10811, 0, 0.528227 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 0.93363, -1.56591e-08, -0.358238, 1.56591e-08, 1, -2.9011e-09, 0.358238, -2.9011e-09, 0.93363, -1.46756, 0, 1.17244 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="."]
+transform = Transform( 0.997409, -3.14428e-09, -0.0719327, 3.14428e-09, 1, -1.13234e-10, 0.0719327, -1.13234e-10, 0.997409, -1.76855, 0, 1.47342 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.412002, 0, -0.965801 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 0.954334, 0, 0.298741, 0, 1, 0, -0.298741, 0, 0.954334, 1.36038, 0, -1.44865 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="."]
+transform = Transform( 0.999867, 7.12524e-10, 0.0163007, -7.12524e-10, 1, -5.80744e-12, -0.0163007, -5.80744e-12, 0.999867, 2.5314, 0, -1.78725 )
+shape = SubResource( 1 )

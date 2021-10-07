@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://models/Sprezyna.fbx" type="PackedScene" id=1]
+[ext_resource path="res://scripts/LaunchSpring.gd" type="Script" id=2]
+[ext_resource path="res://models/Spring.fbx" type="PackedScene" id=3]
+[ext_resource path="res://models/Top_Spring.fbx" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.199872, 0.193642, 0.1265 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.209521, 1, 0.355655 )
+
+[node name="Spring" type="RigidBody"]
+mode = 1
+contacts_reported = 5
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="Top_Spring" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0.221565 )
+
+[node name="Spring" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.2, -4.07344e-08, 7.64274e-16, 0, -2.03672e-08, -0.2, 1.74846e-08, -0.465947, 8.74228e-09, 0, 0, 0.1671 )
+
+[node name="Sprezyna" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.2, 1.86265e-08, 8.32667e-16, 0, -8.74228e-09, 0.2, 1.86265e-08, 0.2, 8.74228e-09, -4.65661e-09, 0, 0.0226948 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -9.68575e-08, 0, 1, 0, 9.68575e-08, 0, -1, 4.65661e-09, 0, 0.12 )
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.461359 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.177144 )
+shape = SubResource( 2 )

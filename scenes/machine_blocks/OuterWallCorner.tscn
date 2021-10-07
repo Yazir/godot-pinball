@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/Outside_Wood_Corner.fbx" type="PackedScene" id=1]
+[ext_resource path="res://textures/Outside_Wood_Corner.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.0788133, 0.151009, 0.0785573 )
+
+[node name="OuterWallCorner" type="StaticBody"]
+
+[node name="Outside_Wood_Corner" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Cube" parent="Outside_Wood_Corner/RootNode" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="Light" parent="Outside_Wood_Corner/RootNode" index="1"]
+visible = false
+
+[node name="Camera" parent="Outside_Wood_Corner/RootNode" index="2"]
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0811211, 0.152051, -0.0807636 )
+shape = SubResource( 2 )
+
+[editable path="Outside_Wood_Corner"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/SwitchController.gd" type="Script" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 2.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.0756159
+height = 1.23693
+
+[node name="Switch" type="Area" groups=[
+"Switch",
+]]
+script = ExtResource( 1 )
+
+[node name="Base" type="MeshInstance" parent="."]
+transform = Transform( 0.0741686, 0, 0, 0, 0.0201644, 0, 0, 0, 0.0741686, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="UnlitLight" type="MeshInstance" parent="."]
+transform = Transform( 0.0492586, 0, 0, 0, 0.0339853, 0, 0, 0, 0.0492586, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 4 )
+
+[node name="SwitchLight" type="MeshInstance" parent="."]
+transform = Transform( 0.0561991, 0, 0, 0, 0.0387738, 0, 0, 0, 0.0561991, 0, 0, 0 )
+visible = false
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )

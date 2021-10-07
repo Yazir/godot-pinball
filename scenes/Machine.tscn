@@ -1,0 +1,205 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://scenes/Bouncer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/machine_blocks/StaticCube.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/arm/Arm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/machine_blocks/OuterWallCorner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/machine_blocks/OuterWall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/machine_blocks/InnerCorner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/machine_blocks/Triangle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://scenes/machine_blocks/HalfCircle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/special_blocks/Booster.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/special_blocks/Threeway.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/machine_blocks/Launchpad.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/special_blocks/Spring.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scripts/GimbalMouseControl.gd" type="Script" id=14]
+[ext_resource path="res://scenes/special_blocks/Oneshot.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/special_blocks/Switch.tscn" type="PackedScene" id=16]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[sub_resource type="PlaneMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0823529, 0.290196, 0.423529, 1 )
+metallic = 0.28
+metallic_texture = ExtResource( 8 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.41809, 0.149279, 2.68153 )
+
+[node name="Machine" type="Spatial"]
+script = ExtResource( 14 )
+
+[node name="Oneshot" parent="." instance=ExtResource( 15 )]
+transform = Transform( -3.67759e-07, 0, -1.30351, 0, 1.30351, 0, 1.30351, 0, -3.67759e-07, 0.892331, 0, -1.01321 )
+score_to_add = 200.0
+
+[node name="Oneshot2" parent="." instance=ExtResource( 15 )]
+transform = Transform( -3.67759e-07, 0, -1.30351, 0, 1.30351, 0, 1.30351, 0, -3.67759e-07, 0.892331, 0, -1.12343 )
+score_to_add = 350.0
+
+[node name="Oneshot3" parent="." instance=ExtResource( 15 )]
+transform = Transform( -3.67759e-07, 0, -1.30351, 0, 1.30351, 0, 1.30351, 0, -3.67759e-07, 0.892331, 0, -1.24621 )
+score_to_add = 700.0
+
+[node name="Spring" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -1.07979, 0.0547815, 0.108083 )
+
+[node name="Launchpad" parent="." instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.09341, 0, -0.00964302 )
+
+[node name="Booster" parent="." instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 0.0114011, 0, 2.13662 )
+
+[node name="Threeway3" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.821149, 0, 0.570713, 0, 1, 0, -0.570713, 0, -0.821149, -1.07322, 0, -0.130533 )
+
+[node name="Threeway4" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.999965, 0, 0.00835406, 0, 1, 0, -0.00835406, 0, -0.999965, 0.00406475, 0, 1.70625 )
+
+[node name="HalfCircle3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 5.44398e-07, 0, -1, 0, 1, 0, 1, 0, 5.44398e-07, 1.21542, -1.52588e-05, 0.0433954 )
+
+[node name="InnerCorner" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.09425, 0.110143, 2.16565 )
+
+[node name="InnerCorner2" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, -1, 0, 4.37114e-08, 1.09141, 0.110143, 2.16565 )
+
+[node name="LowerCollision" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0156488, 0, 0 )
+physics_material_override = SubResource( 1 )
+
+[node name="Machine" type="MeshInstance" parent="LowerCollision"]
+transform = Transform( -1.26964, 0, -1.9525e-07, 0, 1, 0, 1.10995e-07, 0, -2.2334, 0, 0, 0.16238 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LowerCollision"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155552, 0 )
+shape = SubResource( 4 )
+
+[node name="UpperCollision" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616566, 0 )
+physics_material_override = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="UpperCollision"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155552, 0 )
+shape = SubResource( 4 )
+
+[node name="Bouncer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.900949 )
+
+[node name="Bouncer2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0.430949 )
+
+[node name="Bouncer3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0.430949 )
+
+[node name="Bouncer4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, -0.169051 )
+
+[node name="Bouncer5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -0.169051 )
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0746322, 0, 0, 0, 0.28924, 0, 0, 0, 1.70943, 1.26961, -1.66674, 0 )
+visible = false
+
+[node name="Wall2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0746322, 0, 0, 0, 0.28924, 0, 0, 0, 1.70943, -1.27, -1.66702, 0 )
+visible = false
+
+[node name="Wall3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0652039, 0, -0.361882, 0, 0.28924, 0, 0.0363099, 0, 0.649854, -0.909298, -1.66702, -0.399916 )
+visible = false
+
+[node name="Wall4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0717811, 0, 0.218097, 0, 0.28924, 0, -0.0204311, 0, 0.766244, 1.03583, -1.66702, -0.30723 )
+visible = false
+
+[node name="Wall5" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.00191157, 0, 1.31651, 0, 0.28924, 0, -0.0746232, 0, -0.0123468, 0.0183172, -1.66702, 1.73776 )
+visible = false
+
+[node name="OuterWall" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1.01557, 0, -4.43919e-08, 1.27703, 0, -1.7928 )
+
+[node name="OuterWall2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.70474e-07, 0, -1, 0, 1, 0, 1.02628, 0, 1.06736e-07, -1.25, 0, 2.29962 )
+
+[node name="OuterWall3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.599692, 0, 1.61617e-07, 0, 1, 0, -1.95827e-07, 0, 1, 1.20188, 0, 2.33471 )
+
+[node name="OuterWallCorner" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.30899e-08, 0, -0.985782, 0, 1, 0, 0.985782, 0, -4.30899e-08, -1.33027, 0, 2.41465 )
+
+[node name="OuterWallCorner2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.987587, 0, 0, 0, 1, 0, 0, 0, 0.987587, 1.35723, 0, 2.41482 )
+
+[node name="OuterWallCorner3" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.4017e-08, 0, 1.00699, 0, 1, 0, -1.00699, 0, -4.4017e-08, 1.35742, 0, -1.95459 )
+
+[node name="OuterWallCorner4" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1.00376, 0, -1.51563e-07, 0, 1, 0, 1.51563e-07, 0, -1.00376, -1.33031, 0, -1.96548 )
+
+[node name="Arm" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.371711, -0.009, -1.417 )
+input_action_key = "paddle_left"
+
+[node name="Arm2" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.5, -7.5498e-08, -0.866025, -1.50996e-07, 1, -1.51582e-14, -0.866025, -1.30766e-07, 0.5, -0.99, -0.009, -1.417 )
+input_action_key = "paddle_right"
+
+[node name="Triangle" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.42486, -1.66551e-07, 0.134388, -4.86483e-07, 0.489978, 2.2891e-08, -0.134388, -7.83693e-09, -1.42486, -1.25146, -0.00792116, -1.3829 )
+
+[node name="Triangle3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 2.34625e-07, 0, -1.7892, 0, 1, 0, 1.7892, 0, 2.34625e-07, -1.23113, -0.00792116, -0.00991681 )
+
+[node name="Triangle2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 2.56053, 7.66342e-08, 3.86629e-07, -2.38859e-07, 0.935375, 0, -3.86629e-07, -1.15715e-14, 2.56053, 0.907039, -0.00792116, -1.34647 )
+
+[node name="Triangle4" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.42486, -1.66551e-07, -0.134392, -4.86483e-07, 0.489978, -2.28916e-08, -0.134388, -7.83693e-09, 1.4249, -1.25146, -0.00792116, -1.3829 )
+
+[node name="Triangle5" parent="." instance=ExtResource( 7 )]
+transform = Transform( 2.56053, 7.66342e-08, -3.86629e-07, -2.38859e-07, 0.935375, 0, -3.86629e-07, -1.15715e-14, -2.56053, 0.907039, -0.00792116, -1.34647 )
+
+[node name="Switch" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526792, -1.53184e-05, 2.09321 )
+
+[node name="Switch2" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04417, -5.96046e-08, 0.363964 )
+
+[node name="Switch3" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104051, -5.96046e-08, 0.363964 )
+
+[node name="Switch7" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104051, -5.96046e-08, 1.20492 )
+
+[node name="Switch4" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545342, -5.96046e-08, -0.729543 )
+
+[node name="Switch5" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06761, -5.96046e-08, 1.73388 )
+
+[node name="Switch6" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.704282, -5.96046e-08, -0.762804 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.906308, -0.109382, 0.408218, 0, 0.965926, 0.258819, -0.422618, -0.23457, 0.875426, 1.12852, 0.35468, 2.17387 )
+visible = false
+light_energy = 4.66
+light_indirect_energy = 3.72
+spot_angle = 25.0349
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 0.939693, 0.0885213, -0.330366, 0, 0.965926, 0.258819, 0.34202, -0.24321, 0.907673, -1.07148, 0.35468, 2.17387 )
+visible = false
+light_energy = 4.66
+light_indirect_energy = 3.72
+spot_angle = 25.0349

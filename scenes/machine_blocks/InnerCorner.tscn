@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/Rog.fbx" type="PackedScene" id=1]
+[ext_resource path="res://textures/Rog.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="InnerCorner" type="StaticBody"]
+
+[node name="Rog" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Rog" parent="Rog/RootNode" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.141421, 0, 0.141421, 0, 0.2, 0, -0.141421, 0, 0.141421, -0.0689682, 0, -0.0689682 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 0.114074, 0, 0.164278, 0, 0.2, 0, -0.164278, 0, 0.114074, -0.221622, 0, 0.105645 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 0.186726, -3.13182e-09, -0.0716476, 3.13182e-09, 0.2, -5.8022e-10, 0.0716476, -5.8022e-10, 0.186726, -0.293512, 0, 0.234488 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="."]
+transform = Transform( 0.199482, -6.28856e-10, -0.0143865, 6.28856e-10, 0.2, -2.26468e-11, 0.0143865, -2.26468e-11, 0.199482, -0.35371, 0, 0.294684 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 0.173205, 0, 0.1, 0, 0.2, 0, -0.1, 0, 0.173205, 0.0824004, 0, -0.19316 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 0.190867, 0, 0.0597482, 0, 0.2, 0, -0.0597482, 0, 0.190867, 0.272076, 0, -0.28973 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="."]
+transform = Transform( 0.199973, 1.42505e-10, 0.00326014, -1.42505e-10, 0.2, -1.16149e-12, -0.00326014, -1.16149e-12, 0.199973, 0.50628, 0, -0.35745 )
+shape = SubResource( 2 )
+
+[editable path="Rog"]

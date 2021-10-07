@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/Trojkat.fbx" type="PackedScene" id=1]
+[ext_resource path="res://textures/Trojkat.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 2 )
+
+[node name="Triangle" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.64, 0, -0.2, 0, -8.74228e-09, -0.200191, -0.233625, 0.00528654 )
+shape = SubResource( 1 )
+
+[node name="Trojkat" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Cube" parent="Trojkat/RootNode" index="0"]
+material/0 = SubResource( 2 )
+
+[editable path="Trojkat"]

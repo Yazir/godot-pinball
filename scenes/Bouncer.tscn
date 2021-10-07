@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://models/Dzyndzel.fbx" type="PackedScene" id=1]
+[ext_resource path="res://scripts/OutwardsBouncer.gd" type="Script" id=2]
+[ext_resource path="res://textures/Dzyndzel.png" type="Texture" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="CylinderShape" id=2]
+radius = 0.0809358
+height = 0.400855
+
+[node name="Bouncer" type="Area"]
+script = ExtResource( 2 )
+
+[node name="Dzyndzel" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0, 0, 0 )
+
+[node name="Cylinder" parent="Dzyndzel/RootNode" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0150267, 0 )
+shape = SubResource( 2 )
+
+[editable path="Dzyndzel"]

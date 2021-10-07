@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/Outside_Wood.png" type="Texture" id=2]
+[ext_resource path="res://models/Zewnetrzna_sciana.fbx" type="PackedScene" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.99956, 0.151009, 0.0933886 )
+
+[node name="OuterWall" type="StaticBody"]
+
+[node name="Zewnetrzna_sciana" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Cube" parent="Zewnetrzna_sciana/RootNode" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99784, 0.152051, 0.013434 )
+shape = SubResource( 2 )
+
+[editable path="Zewnetrzna_sciana"]
